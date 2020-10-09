@@ -27,6 +27,9 @@ Os principais "maven goals" são os seguintes:
 * deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects
 
 A respetiva sequência de invocação obtém-se com o seguinte comando:
-```$ mvn help:describe -Dcmd=PHASENAME ```
+
+```
+$ mvn help:describe -Dcmd=PHASENAME 
+```
 onde PHASENAME, como o próprio nome indica, é a respetiva fase.
 
