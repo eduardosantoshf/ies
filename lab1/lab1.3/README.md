@@ -51,3 +51,15 @@ Once you’re satisfied that your bulletin board container works correctly, you 
 docker rm --force bb
 ```
 The **--force** option stops a running container, so it can be removed. If you stop the container running with docker stop bb first, then you do not need to use **--force** to remove it.
+
+## Perguntas
+
+* Resultado do comando: $ docker container ls –all:
+
+```
+CONTAINER ID        IMAGE               COMMAND             CREATED            STATUS              PORTS               NAMES
+200dd6682607        eg_postgresql       "bash"              6 minutes ago       Up 6 minutes        5432/tcp            upbeat_ishizaka
+```
+
+* Qual a relevância de configurar “volumes” quando se pretende preparar um container para servir uma base de dados?
+A criação/configuração de volumes serve para manter a persistência de dados, mesmo quando o próprio container é apagado.
