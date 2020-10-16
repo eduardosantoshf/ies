@@ -62,4 +62,5 @@ CONTAINER ID        IMAGE               COMMAND             CREATED            S
 ```
 
 * Qual a relevância de configurar “volumes” quando se pretende preparar um container para servir uma base de dados?
+
 A criação/configuração de volumes serve para manter a persistência de dados, mesmo quando o próprio container é apagado.
