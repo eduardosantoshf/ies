@@ -2,22 +2,22 @@
 
 Check docker version
 ```
-docker --version
+$ docker --version
 ```
 
 Test Docker installation
 ```
-docker run hello-world
+$ docker run hello-world
 ```
 
 List the Docker images on computer
 ```
-docker image ls
+$ docker image ls
 ```
 
 List the existing Docker containers
 ```
-docker ps --all
+$ docker ps --all
 ```
 
 Let us download the node-bulletin-board example project. This is a simple bulletin board application written in Node.js.
@@ -30,13 +30,13 @@ Now that you have some source code and a Dockerfile, it’s time to build your f
 
 Make sure you’re in the directory node-bulletin-board/bulletin-board-app in a terminal or PowerShell using the cd command. Run the following command to build your bulletin board image:
 ```
-docker build --tag bulletinboard:1.0 .
+$ docker build --tag bulletinboard:1.0 .
 ```
 
 ## Run your image as a container
 Run the following command to start a container based on your new image:
 ```
-docker run --publish 8000:8080 --detach --name bb bulletinboard:1.0
+$ docker run --publish 8000:8080 --detach --name bb bulletinboard:1.0
 ```
 
 There are a couple of common flags here:
@@ -48,9 +48,45 @@ Visit your application in a browser at **localhost:8000**
 
 Once you’re satisfied that your bulletin board container works correctly, you can delete it:
 ```
-docker rm --force bb
+$ docker rm --force bb
 ```
 The **--force** option stops a running container, so it can be removed. If you stop the container running with docker stop bb first, then you do not need to use **--force** to remove it.
+
+## Dockerize PostgreSQL
+Full tutorial: https://docs.docker.com/engine/examples/postgresql_service/
+
+Build an image from the Dockerfile and assign it a name:
+```
+$ docker build -t eg_postgresql .
+```
+
+Run the PostgreSQL server container (in the foreground):
+```
+$ docker run --rm -P --name pg_test eg_postgresql
+```
+
+Connect from your host system:
+```
+$ docker ps
+```
+
+Connect to the database:
+```
+$ sql -h localhost -p 49153 -d docker -U docker --password
+```
+
+## Docker Compose
+Full tutorial: https://docs.docker.com/compose/gettingstarted/
+
+Start docker-compose:
+```
+$ docker-compose up
+```
+
+Stop docker-compose:
+```
+$ docker-compose stop
+```
 
 ## Perguntas
 
