@@ -12,3 +12,9 @@ Here essentially a single web app runs on a given embedded server. However if yo
 The **Spring Web model-view-controller** (**MVC**) **framework** is designed around a DispatcherServlet that dispatches requests to handlers, with configurable handler mappings, view resolution, locale and theme resolution as well as support for uploading files. The default handler is based on the `@Controller` and `@RequestMapping` annotations, offering a wide range of flexible handling methods. With the introduction of Spring 3.0, the `@Controller` mechanism also allows you to create RESTful Web sites and applications, through the `@PathVariable` annotation and other features.
 
 ### Inspect the POM.xml for the previous SpringBoot projects. What is the role of the “starters” dependencies?
+The starters allow us to add jars in the classpath. SpringBoot starters makes a much easier and rapid development.
+
+### Which annotations are transitively included in the @SpringBootApplication?
+* `@EnableAutoConfiguration`: enable Spring Boot’s auto-configuration mechanism
+* `@ComponentScan`: enable @Component scan on the package where the application is located (see the best practices)
+* `@Configuration`: allow to register extra beans in the context or import additional configuration classes
