@@ -1,5 +1,9 @@
 ## 3.1
 
+### c) What happens to your data when the application is stopped and restarted? How could you change that behavior? You don’t need to implement a solution; just explain it (with details).
+
+When the application is restarted all the changes made by HTTP requests gets rolled back, this happens because, when the class `LoadDatabase` gets called, this inserts 2 employees innto the database. When the REST api is called, the data is stored in an instance of this, and not in the database.
+
 ### Be sure to list all, filter one, insert and update Employees, i.e., try the several web methods. Take note of the URL used and report in the Readme.
 * GET requests (type: GET):
 	* Allow us to list all employees:
@@ -28,7 +32,21 @@
 ### What would be the proper HTTP Status code to get when searching an API for non-existent `http://localhost:8080/employees/987987`?
 404 Not found
 
-## 3.2
+### Create a layered architecture view (UML diagram), displaying the key abstractions in the solution, in particular: entities, repositories and REST controllers.
+![GET employees id: 1](images/LayeredArchitectureView.png)
 
-### Explain the annotations @Table, @Colum, @Id found in the Employee entity.
+### Describe the role of the elements modeled in the previous point.
+* Entities:
+	* `Employee.java`:
+		* Class that represents an employee (atributtes: ID, name, role)
+	* `PayrollApplication.java`:
+		* Where the function static void main is, along with the @SpringBootApplication
+	* `LoadDatabase.java`:
+		* Where the database is initialized
+	* `EmployeeNotFoundException.java`, `EmployeeNotFoundAdvice.java`
+		* This 2 classes are used to control exceptions, like when there are requests made to non-existant employees, responding wit a 404
+	* `EmployeeRepository.java`:
+		* This classe is used to store information about Employee, data can also be accessed from thhe same class
+	* `EmployeeController.java`:
+		* Used to manipulate data requested by HTTP methhods like GET, POST, PUT, DELETE, etc.
 
